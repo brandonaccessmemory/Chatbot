@@ -1,5 +1,5 @@
 # Chameleon- An Adaptive Chatbot
-Individual Project for University of Warwick Third Year
+# Individual Project for University of Warwick Third Year
 Conversations are essential for personal well-being and to form meaningful connections with others. While there are a myriad of benefits into having a meaningful conversation, many individuals find themselves without the opportunity of having conversational partners for effective communication or having a safe space to convey private knowledge.
 Lacking communication skills or conversational partners often leads to difficulties in maintaining relationships and having effective communication, contributing to feelings of loneliness and depression.
 Given that negative experiences, social anxiety, and insecurity are often cited as significant contributors, being able to have conversations can be instrumental in supporting individuals with their mental health and confidence to mitigate the impacts of these contributing factors.
