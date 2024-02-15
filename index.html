@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Chameleon Chatbot</title>
+    <link rel = "icon" type = "image/x-icon" href="./favicon.ico">
+  </head>
+    <body>
+        <div>
+          <h1>Welcome to Chameleon! Please click the icon on the bottom right to get started</h1>
+          <img src="./favicon.ico" alt="trademark">
+        </div>
+        <script>!(function () {
+            let e = document.createElement("script"),
+              t = document.head || document.getElementsByTagName("head")[0];
+            (e.src =
+              "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+              // Replace 1.x.x with the version that you want
+              (e.async = !0),
+              (e.onload = () => {
+                window.WebChat.default(
+                  {
+                    customData: { language: "en" },
+                    socketUrl: "http://localhost:5005",
+                    title : "Rasa Chatbot",
+                    subtitle: "Say hi and get started!",
+                    // add other props here
+                    // payload sent to Rasa when conversation starts 
+                    initPayload: "./personality_type"
+                  },
+                  null
+                );
+              }),
+              t.insertBefore(e, t.firstChild);
+          })();
+          window.localStorage.clear();
+          </script>
+    </body>
+</html>
+<!-- Hi, anyone who wants to clear chats can add following line in script tag
+window.localstorage.clear()
+Also, to clear chats on restart, you can add condition with following code :
+window.onload() -->

@@ -1,6 +1,13 @@
 version: "3.1"
 
 stories:
+- story: inital_configuration 
+  steps: 
+  - intent: personality_type 
+  - action: utter_pt
+  - intent: inform_pt
+  - action: action_greeting
+  - action: utter_greet
 
 - story: happy path
   steps:
@@ -8,6 +15,13 @@ stories:
   - action: utter_greet
   - intent: mood_great
   - action: utter_happy
+  - action: utter_feedback
+
+- story: tell weather 
+  steps: 
+  - intent: ask_weather
+  - action: utter_weather
+  - action: action_greeting
 
 - story: sad path 1
   steps:
@@ -28,3 +42,61 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+# - story: greet and subscribe
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: subscribe
+#   - action: newsletter_form
+#   - active_loop: newsletter_form
+#   - active_loop: null
+#   - action: utter_subscribed
+
+
+    
+# - story : User doesnt want to continue
+#   steps:
+#   - intent : greet 
+#   - action : utter_greet
+#   - intent : buy_pizza
+#   - action : simple_pizza 
+#   - active_loop : simple_pizza
+#   - intent : stop 
+#   - action : utter_ask_continue 
+#   - or : 
+#     - intent : stop
+#     - intent : affirm 
+#   - action : action_deactivation 
+#   - active_loop : null
+
+- story: play_rps 
+  steps:
+  - intent: play
+  - action: utter_play
+  - intent: inform_play
+  - action: action_play_rps
+  - action: utter_play_again
+
+- story: play_again
+  steps:
+  - action: utter_play_again
+  - intent: affirm
+  - action: utter_play
+
+- story: dont want to play 
+  steps:
+  - action: utter_play_again
+  - intent: deny
+  - action: utter_goodbye
+
+- story: positive feedback
+  steps: 
+  - intent: positive 
+  - action: utter_gratitude
+
+- story: negative feedback 
+  steps: 
+  - intent: negative
+  - action: utter_sorry
+

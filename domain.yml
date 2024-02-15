@@ -1,34 +1,117 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+- affirm
+- ask_weather
+- bot_challenge
+- deny
+- goodbye
+- greet
+- inform_email
+- inform_frequency
+- inform_play
+- inform_pt
+- mood_great
+- mood_unhappy
+- negative
+- personality_type
+- play
+- positive
+- subscribe
+slots:
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: email
+      conditions:
+      - active_loop: newsletter_form
+        requested_slot: email
+  frequency:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: frequency
+  rps_choice:
+    type: categorical
+    values:
+    - rock
+    - paper
+    - scissors
+    mappings:
+    - type: from_entity
+      entity: rps_choice
+  personality_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: personality_type
+  user_tone: 
+    type: text 
+    influence_conversation: false
+    mappings: 
+    - type: from_entity
+      entity: personality_type
+forms:
+  newsletter_form:
+    required_slots:
+    - email
+    - frequency
 
+entities:
+- personality_type
+- user_tone
+- email
+- frequency
+- rps_choice
 responses:
+  utter_pt:
+  - text: What is your personality type according to MBTI?
+  utter_gratitude:
+  - text: Thank you for your response :), please continue!
+  utter_sorry:
+  - text: I apologise but please continue!
+  utter_play:
+  - text: ROCK PAPER SCISSORS!
+  utter_play_again:
+  - text: Fight me again
   utter_greet:
-  - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://media-be.chewy.com/wp-content/uploads/2022/09/27095535/cute-dogs-pembroke-welsh-corgi.jpg
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-  - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-  - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
+  utter_ask_email:
+  - text: What is your email address?
+  utter_ask_frequency:
+  - text: How often do you want to receive emails from me?
+  utter_subscribed:
+  - text: You're all set! Check your inbox at {email} to confirm your subscription. You will receive emails {frequency}.
+  utter_weather:
+  - text: The weather is great today
+  utter_feedback:
+  - text: Is the response accurate ?
+    buttons:
+    - title: 👍
+      payload: /positive
+    - title: 👎
+      payload: /negative
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+actions:
+- utter_play
+- action_greeting
+- utter_pt
+- utter_greet
+- action_play_rps
+- utter_goodbye

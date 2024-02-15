@@ -1,0 +1,5 @@
+marker_played_rps:
+  action: action_play_rps
+
+#rasa run --enable-api --cors "*" --debug
+#python -m http.server ( port 8000 ) starts a server

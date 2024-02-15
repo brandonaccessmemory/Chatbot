@@ -1,0 +1,28 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-email",
+      "2": "I-email",
+      "3": "L-email",
+      "4": "U-email",
+      "5": "B-rps_choice",
+      "6": "I-rps_choice",
+      "7": "L-rps_choice",
+      "8": "U-rps_choice",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-email": 1,
+      "I-email": 2,
+      "L-email": 3,
+      "U-email": 4,
+      "B-rps_choice": 5,
+      "I-rps_choice": 6,
+      "L-rps_choice": 7,
+      "U-rps_choice": 8,
+      "O": 0
+    },
+    "num_tags": 9
+  }
+]

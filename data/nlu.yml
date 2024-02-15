@@ -1,6 +1,18 @@
 version: "3.1"
-
 nlu:
+- intent: positive
+  examples: |
+    - yes
+    - sure
+    - good
+    - accurate
+    - correct
+- intent: negative
+  examples: |
+    - no
+    - could be better
+    - incorrect
+    - inaccurate
 - intent: greet
   examples: |
     - hey
@@ -16,7 +28,8 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+    - [ENFp](personality_type)
+    - [enfp](personality_type)
 - intent: goodbye
   examples: |
     - cu
@@ -29,7 +42,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
+    - gu
 - intent: affirm
   examples: |
     - yes
@@ -38,17 +51,18 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
     - n
+    - not interested
     - never
     - I don't think so
     - don't like that
     - no way
     - not really
-
+    - I want to subscribe
+    - \quit
 - intent: mood_great
   examples: |
     - perfect
@@ -65,7 +79,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -82,10 +95,63 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: subscribe
+  examples: |
+    - I want to get the newsletter
+    - Can you send me the newsletter?
+    - Can you sign me up for the newsletter?
+    - I want to subscribe to a newsletter.
+    - i want to subscribe
+- intent: inform_frequency
+  examples: |
+    - every week
+    - once a week
+    - twice per month
+    - as ofter as possible
+    - once a month
+- intent: inform_email
+  examples: |
+    - My email is [example@example.com](email)
+    - [random@example.com](email)
+    - Please send it to [anything@example.com](email)
+    - Email is [something@example.com](email)
+- intent: inform_play
+  examples: |
+    - [rock](rps_choice)
+    - [paper](rps_choice)
+    - [scissors](rps_choice)
+- intent: play
+  examples: |
+    - I want to play
+    - Lets play
+    - Play
+    - Entertain me
+    - Fun
+    - play
+    - lets play
+- intent: ask_weather
+  examples: |
+    - weather
+    - how is the weather
+    - can you tell me the weather
+- intent: personality_type
+  examples: |
+    - What is your personality
+    - Personality type
+    - MBTI
+    - My personality
+    - Please tell me about your personality
+    - personality
+    - I want to tell you my personality
+- intent: inform_pt
+  examples: |
+    - My personality is [ENFP](personality_type)
+    - [ISTJ](personality_type)
+    - [entj](personality_type)
+    - Its [INFP](personality_type)
