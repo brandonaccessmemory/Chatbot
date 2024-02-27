@@ -8,9 +8,38 @@
 # This is a simple example for a custom action which utters "Hello World!"
 from typing import Any, Text, Dict, List
 import random
+import requests
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+
+class ActionSendRequest(Action):
+    def name(self) -> Text: 
+        return "action_generate"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Get data from the tracker (e.g., user's message)
+        user_message = tracker.latest_message.get("text")
+
+        # Define the FastAPI endpoint URL
+        fastapi_url = "http://localhost:8000/chatbot"
+
+        # Send a POST request to the FastAPI endpoint
+        response = requests.post(fastapi_url, json={"input_text" : user_message})
+
+        # If response status is OK
+        if response.status_code == 200:
+            response_data = response.json()
+            # Process the response data
+            dispatcher.utter_message(text=response_data["response"])
+        else:
+            dispatcher.utter_message(text="Error: Unable to generate response")
+
+        return []
+
 
 class ActionGenerateGreeting(Action):
     def name(self) -> Text: 

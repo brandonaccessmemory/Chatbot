@@ -33,3 +33,5 @@ data = data.reshape(len(input),1)
 print(data.shape)
 print(decode(model.generate(data,max_new_tokens=200)[0].tolist()))
 print(model)
+
+##  ssh -L5999:/tmp/dcs-tmp.u2101112/.vnc-socket u2101112@remote-12.dcs.warwick.ac.uk

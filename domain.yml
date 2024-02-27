@@ -17,6 +17,7 @@ intents:
 - play
 - positive
 - subscribe
+
 slots:
   email:
     type: text
@@ -66,6 +67,7 @@ entities:
 - email
 - frequency
 - rps_choice
+
 responses:
   utter_pt:
   - text: What is your personality type according to MBTI?
@@ -115,3 +117,4 @@ actions:
 - utter_greet
 - action_play_rps
 - utter_goodbye
+- action_generate

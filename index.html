@@ -11,10 +11,12 @@
         <script>!(function () {
             let e = document.createElement("script"),
               t = document.head || document.getElementsByTagName("head")[0];
-            (e.src =
+              //loads rasa webchat from a CDN
+              (e.src =
               "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
               // Replace 1.x.x with the version that you want
               (e.async = !0),
+              // initialises rasa webchat 
               (e.onload = () => {
                 window.WebChat.default(
                   {

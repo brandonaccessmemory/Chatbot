@@ -9,4 +9,8 @@ python -m http.server
 rasa run --enable-api --cors="*"
 # This is rasa SDK action serve 
 rasa run actions
+# start virtual environment
+.\venv\Scripts\activate
+# start fastapi backend server
+python api.py
 ```
