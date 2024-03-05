@@ -4,18 +4,68 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
 
-
-# This is a simple example for a custom action which utters "Hello World!"
 from typing import Any, Text, Dict, List
 import random
 import requests
+import json
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
+class ActionSaveDialogue(Action):
+    def name(self) -> Text: 
+        return "action_save_dialogue"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # Get data from the tracker (e.g., user's message)
+        user_message = tracker.latest_message.get("text")
+
+        return []
+
+class ActionSavePreference(Action):
+    def name(self) -> Text: 
+        return "action_save_preference"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        # Get data from the tracker (e.g., user's message)
+        user_message = tracker.latest_message.get("text")
+        return []
+        
+class ActionGenerateProfile(Action):
+    def name(self) -> Text: 
+        return "action_generate_profile"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+    tracker: Tracker,
+    domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        character_data = {
+                    "mbti": tracker.get_slot("personality_type").lower(),
+                    "preferences": "",
+                    "dialogue_history" : [
+                        {
+                            "query": "",
+                            "response": "",
+                        }],
+                    "biography": [
+                        "Even if I am popular and well-liked at school, I am single.",
+                    ]
+                }
+            
+        with open('user_profile.json', 'w') as json_file: 
+            json.dump(character_data, json_file)
+
+        dispatcher.utter_message(text="Thank you! It was great to learn more about you.")
+        return []
+
 class ActionSendRequest(Action):
     def name(self) -> Text: 
-        return "action_generate"
+        return "action_generate_response"
     
     def run(self, dispatcher: CollectingDispatcher,
     tracker: Tracker,

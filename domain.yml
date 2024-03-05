@@ -1,13 +1,10 @@
 version: '3.1'
 intents:
 - affirm
-- ask_weather
 - bot_challenge
 - deny
 - goodbye
 - greet
-- inform_email
-- inform_frequency
 - inform_play
 - inform_pt
 - mood_great
@@ -16,24 +13,9 @@ intents:
 - personality_type
 - play
 - positive
-- subscribe
+- inform_preference
 
 slots:
-  email:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: email
-      conditions:
-      - active_loop: newsletter_form
-        requested_slot: email
-  frequency:
-    type: text
-    influence_conversation: false
-    mappings:
-    - type: from_entity
-      entity: frequency
   rps_choice:
     type: categorical
     values:
@@ -55,17 +37,11 @@ slots:
     mappings: 
     - type: from_entity
       entity: personality_type
-forms:
-  newsletter_form:
-    required_slots:
-    - email
-    - frequency
+
 
 entities:
 - personality_type
 - user_tone
-- email
-- frequency
 - rps_choice
 
 responses:
@@ -92,14 +68,8 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
-  utter_ask_email:
-  - text: What is your email address?
-  utter_ask_frequency:
-  - text: How often do you want to receive emails from me?
-  utter_subscribed:
-  - text: You're all set! Check your inbox at {email} to confirm your subscription. You will receive emails {frequency}.
-  utter_weather:
-  - text: The weather is great today
+  utter_get_help: 
+  - text: I understand that you may be having difficulty. Don't hesitate to reach out if you need assistance. 
   utter_feedback:
   - text: Is the response accurate ?
     buttons:
@@ -107,9 +77,23 @@ responses:
       payload: /positive
     - title: 👎
       payload: /negative
+
+# preferences 
+  utter_movie:
+  - text: What movies do you like?
+  utter_music: 
+  - text: Any favourite music? 
+  utter_food: 
+  - text: What's your favourite food? 
+  utter_pets: 
+  - text: Do you like animals?
+  utter_hobby: 
+  - text: Do you have any hobbies?
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
 actions:
 - utter_play
 - action_greeting
@@ -117,4 +101,6 @@ actions:
 - utter_greet
 - action_play_rps
 - utter_goodbye
-- action_generate
+- action_save_preference
+- action_generate_response 
+- action_generate_profile

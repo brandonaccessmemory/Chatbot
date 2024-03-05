@@ -7,7 +7,17 @@ stories:
   - action: utter_pt
   - intent: inform_pt
   - action: action_greeting
-  - action: utter_greet
+  - action: utter_movie
+  - action: action_save_preference 
+  - action: utter_music
+  - action: action_save_preference
+  - action: utter_food
+  - action: action_save_preference 
+  - action: utter_pets
+  - action: action_save_preference 
+  - action: utter_hobby
+  - action: action_save_preference 
+  - action: action_generate_profile
 
 - story: happy path
   steps:
@@ -16,12 +26,6 @@ stories:
   - intent: mood_great
   - action: utter_happy
   - action: utter_feedback
-
-- story: tell weather 
-  steps: 
-  - intent: ask_weather
-  - action: utter_weather
-  - action: action_greeting
 
 - story: sad path 1
   steps:
@@ -42,33 +46,6 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
-
-# - story: greet and subscribe
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: subscribe
-#   - action: newsletter_form
-#   - active_loop: newsletter_form
-#   - active_loop: null
-#   - action: utter_subscribed
-
-
-    
-# - story : User doesnt want to continue
-#   steps:
-#   - intent : greet 
-#   - action : utter_greet
-#   - intent : buy_pizza
-#   - action : simple_pizza 
-#   - active_loop : simple_pizza
-#   - intent : stop 
-#   - action : utter_ask_continue 
-#   - or : 
-#     - intent : stop
-#     - intent : affirm 
-#   - action : action_deactivation 
-#   - active_loop : null
 
 - story: play_rps 
   steps:

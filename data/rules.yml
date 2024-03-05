@@ -4,7 +4,7 @@ rules:
 - rule: Send request to model 
   steps: 
   - intent: nlu_fallback
-  - action: action_generate
+  - action: action_generate_response
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
@@ -16,9 +16,8 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-- rule: Activate form
-  steps:
-  - intent: subscribe
-  - action: newsletter_form
-  - active_loop: newsletter_form
+- rule: send hepl 
+  steps: 
+  - intent: critical 
+  - action: utter_get_help
   

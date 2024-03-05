@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import json
 # from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # # Initialize your chatbot model and tokenizer
@@ -30,3 +31,17 @@ def generate(input_data: InputData):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
+
+#     # Load JSON data from file
+# with open('character_data.json', 'r') as json_file:
+#     character_data = json.load(json_file)
+
+# # Access specific fields
+# character_name = character_data["u0"]["character_name"]
+# movie_name = character_data["u0"]["movie_name"]
+# gender = character_data["u0"]["gender"]
+
+# print("Character Name:", character_name)
+# print("Movie Name:", movie_name)
+# print("Gender:", gender)
